@@ -1,16 +1,21 @@
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
 
 public class DS3Lnkdlst {
     public static void main(String[] args) {
-        ArrayList<Integer> list = new ArrayList<>();
-        list.add(10);
-        list.add(14);
-        list.add(12);
-        //list.remove(0);
-        list.indexOf(10);
-        list.contains(10);
-        list.size();
-        list.toArray();
-        //System.out.println(list.indexOf(10));
+        LinkedList<Integer> list = new LinkedList<>();
+        list.addLast(10);
+        list.addLast(20);
+        list.addLast(30);
+        list.addFirst(300);
+        list.removeLast();
+        // System.out.println(list);
+        // System.out.println(list.contains(10));
+        // System.out.println(list.size());
+        // System.out.println(list.indexOf(10));
+
+        //Convert
+        var array = list.toArray();
+        System.out.println(Arrays.toString(array));
     }
 }
