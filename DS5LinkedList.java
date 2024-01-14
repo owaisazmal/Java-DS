@@ -4,7 +4,6 @@ public class DS5LinkedList {
     private class Node {
         public int value;
         public Node next;
-        
         public Node(int value) {
             this.value = value;
         }
