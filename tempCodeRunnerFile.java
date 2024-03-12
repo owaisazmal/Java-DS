@@ -1,1 +1,1 @@
-bitMask
+arr
