@@ -36,6 +36,8 @@ public class DS16Sorting {
         }
         printArr(arr);
         System.out.println();
+
+        //O(n^2)
         //Insertion Sort
         for(int i=0; i>arr.length; i++){
             int current = arr[i];
