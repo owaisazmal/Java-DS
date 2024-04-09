@@ -42,7 +42,15 @@ public class DS17Recursion2 {
 
     //Check if an Array is sorted or not
     public static boolean isSorted(int arr[], int idx){
-
+        if(idx == arr.length-1){
+            return true;
+        }
+        if(arr[idx] < arr[idx+1]){
+            //array is sorted till now
+            return isSorted(arr, idx+1);
+        }else{
+            return false;
+        }
     } 
 
     public static void main(String[] args) {
@@ -51,6 +59,7 @@ public class DS17Recursion2 {
         //towerOfHanoi(n, "S", "H", "D");
         //StringRev(str, str.length()-1);
         OccStr(str, 0, 'a');
+        is
 
     }
 }
