@@ -24,8 +24,10 @@ public class DS21Queue {
         System.out.println("Peek: " + queue.peek());
 
         //Priority Queues
+        //puts everything in Assenmding order by default
 
         //Queue <Double> queue2 = new PriorityQueue<>();
+
         Queue <Double> queue2 = new PriorityQueue<>(Collections.reverseOrder());
 
         queue2.offer(6.5);
@@ -34,6 +36,7 @@ public class DS21Queue {
         queue2.offer(2.5);
         queue2.offer(4.5);
         queue2.offer(3.5);
+        queue2.offer(5.6);
 
         while(!queue2.isEmpty()){
             System.out.println(queue2.poll());
