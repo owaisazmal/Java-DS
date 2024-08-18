@@ -35,6 +35,7 @@ public class DS30MergeSort {
         merge(leftArray, rightArray, array);
 
     }
+    //test
 
     public static void merge(int[] leftArray, int[] rightArray, int[] array){
 
