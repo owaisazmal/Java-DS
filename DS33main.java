@@ -17,5 +17,6 @@ public class DS33main {
         graph.addEdge(4, 2);
 
         graph.print();
+        System.out.println(graph.checkEdge(0, 1));
     }
 }
