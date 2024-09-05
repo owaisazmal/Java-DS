@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.*;
 
 public class DS33Graph {
     //Adjacency Matrix: A 2D array to store 1's/0's to represent edges
@@ -66,4 +66,23 @@ public class DS33Graph {
         }return;
     }
 
+    public void breadthfirstSearch(int src){
+        Queue<Integer> queue = new LinkedList<>();  
+        boolean[] visited = new boolean[matrix.length];
+
+        queue.offer(src);
+        visited[src]=true;
+
+        while(queue.size() != 0){
+            src = queue.poll();
+            System.out.println(nodes.get(src).data + " = visited");
+
+            for(int i = 0; i < matrix[src].length; i++){
+                if(matrix[src][i] == 1 && !visited[i]){
+                    queue.offer(i);
+                    visited[i] = true;
+                }
+            }
+        }
+    }
 }

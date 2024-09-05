@@ -18,6 +18,7 @@ public class DS33main {
 
         graph.print();
         System.out.println(graph.checkEdge(0, 1)); //to check if it has edge.
-        graph.depthFirstSearch(1);
+        //graph.depthFirstSearch(3);
+        graph.breadthfirstSearch(1);
     } 
 }
