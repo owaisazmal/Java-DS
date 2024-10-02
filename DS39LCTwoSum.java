@@ -1,4 +1,7 @@
 
+import java.util.*;
+
+
 public class DS39LCTwoSum {
     public static void main(String[] args) {
         int nums[] = {3, 6, 7, 8, 4};
@@ -9,6 +12,7 @@ public class DS39LCTwoSum {
             System.out.println("No solution found");
         }
     }
+    //1. Two Sum
     public static  int[] twoSum(int[] nums, int target) {
         int n = nums.length;
         for(int i = 0; i<n-1; i++){
@@ -27,4 +31,30 @@ public class DS39LCTwoSum {
         }
         return res;
     }
+    //509. Fibonacci Number
+    public int fib(int n) {
+        if(n<=1){
+            return n;
+        }
+        return fib(n-1) + fib(n-2);
+    }
+    //1331. Rank Transform of an Array
+    public int[] arrayRankTransform(int[] arr){
+        int[] clone = arr.clone();
+        Arrays.sort(clone);
+
+        Map<Integer, Integer> map = new HashMap<>();
+        int rank =1;
+
+        for(int num : clone){
+            if (!map.containsKey(num)){
+                map.put(num, rank);
+                rank++;
+            }
+        }
+        for(int i=0; i<arr.length; i++){
+            arr[i]=map.get(arr[i]);
+        }
+        return arr;
+    } 
 }
