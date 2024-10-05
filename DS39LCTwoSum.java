@@ -56,5 +56,33 @@ public class DS39LCTwoSum {
             arr[i]=map.get(arr[i]);
         }
         return arr;
-    } 
+    }
+    //349. Intersection of Two Arrays
+    public int[] intersection(int[] nums1, int[] nums2) {
+
+        // Create HashSets to store unique elements
+        Set<Integer> n1 = new HashSet<>();
+        Set<Integer> result = new HashSet<>();
+
+        // Add elements from nums1 to n1 set
+        for (int num : nums1) {
+            n1.add(num);
+        }
+
+        // Check if nums2 elements are in n1 and add to result set if they are
+        for (int num : nums2) {
+            if (n1.contains(num)) {
+                result.add(num);
+            }
+        }
+
+        // Convert the HashSet result to an array
+        int[] arr = new int[result.size()];
+        int i = 0;
+        for (int no : result) {  
+            arr[i++] = no;
+        }
+
+        return arr;
+    }
 }
