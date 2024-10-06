@@ -99,17 +99,45 @@ public class DS39LCTwoSum {
         }
     }
     //27. Remove Element
-    class Solution {
-        public int removeElement(int[] nums, int val) {
-            int i =0;
-            for(int j = 0; j<nums.length;j++){
-                if(nums[j] != val){
-                    nums[i] = nums[j];
-                    i++;
-                }
+    public int removeElement(int[] nums, int val) {
+        int i =0;
+        for(int j = 0; j<nums.length;j++){
+            if(nums[j] != val){
+                nums[i] = nums[j];
+                i++;
             }
-            return i;
         }
+        return i;
     }
+    //35. Search Insert Position
+    public int searchInsert(int[] nums, int target) {
+        int first = 0;
+        int last = nums.length-1;
 
+        while (first <= last){
+            int mid = first + (last - first) / 2;
+            if(target == nums[mid]){
+                return mid;
+            }else if(target > nums[mid]){
+                first = mid+1;
+            }else{
+                last = mid - 1;
+            }
+        }
+        return first;
+    }
+    //66. Plus One
+    public int[] plusOne(int[] digits) {
+        for (int i = digits.length - 1; i >= 0; i--) {
+            if (digits[i] < 9) {
+                digits[i]++;
+                return digits;
+            }
+            digits[i] = 0;
+        }
+
+        digits = new int[digits.length + 1];
+        digits[0] = 1;
+        return digits;
+    }
 }
