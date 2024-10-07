@@ -140,4 +140,22 @@ public class DS39LCTwoSum {
         digits[0] = 1;
         return digits;
     }
+    //88. Merge Sorted Array
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        for(int j = 0, i = m; j<n; j++){
+            nums1[i] = nums2[j];
+            i++;
+        }
+        Arrays.sort(nums1);
+    }
+    //217. Contains Duplicate
+    public boolean containsDuplicate(int[] nums) {
+        Arrays.sort(nums);
+        for(int i = 0; i<nums.length - 1; i++){
+            if(nums[i] == nums[i+1]){
+                return true;
+            }
+        }
+        return false;
+    }
 }
