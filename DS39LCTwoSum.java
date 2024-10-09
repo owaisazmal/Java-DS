@@ -158,4 +158,33 @@ public class DS39LCTwoSum {
         }
         return false;
     }
+    //219. Contains Duplicate II
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        
+        for (int i = 0; i < nums.length; i++) {
+            if (map.containsKey(nums[i])) {
+                int prevIndex = map.get(nums[i]);
+                if (i - prevIndex <= k) {
+                    return true;
+                }
+            }
+            // Update or add the element with the current index
+            map.put(nums[i], i);
+        }
+        return false;
+    }
+    //1385. Find the Distance Value Between Two Arrays
+    public int findTheDistanceValue(int[] arr1, int[] arr2, int d) {
+        int ans =0;
+        for(int i = 0; i<arr1.length; i++){
+            for(int j = 0; j<arr2.length; j++){
+                if(Math.abs(arr1[i]-arr2[j]) <= d){
+                    ans++;
+                    break;
+                }
+            }
+        }
+        return (arr1.length-ans);
+    }
 }
