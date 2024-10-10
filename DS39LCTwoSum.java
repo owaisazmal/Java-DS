@@ -187,4 +187,31 @@ public class DS39LCTwoSum {
         }
         return (arr1.length-ans);
     }
+    //118. Pascal's Triangle
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> result = new ArrayList<>();
+
+        if (numRows == 0) {
+            return result;
+        }
+
+        List<Integer> firstRow = new ArrayList<>();
+        firstRow.add(1);
+        result.add(firstRow);
+
+        for (int row = 1; row < numRows; row++) {
+            List<Integer> prevRow = result.get(row - 1);
+            List<Integer> currRow = new ArrayList<>();
+            currRow.add(1); // First element of each row is always 1
+
+            for (int i = 1; i < row; i++) {
+                currRow.add(prevRow.get(i - 1) + prevRow.get(i)); // Sum of two numbers directly above
+            }
+
+            currRow.add(1); // Last element of each row is always 1
+            result.add(currRow);
+        }
+
+        return result;
+    }
 }
