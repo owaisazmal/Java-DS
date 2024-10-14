@@ -256,9 +256,48 @@ public class DS39LCTwoSum {
             }
             else{
                 max_area = Math.max(max_area, height[b_pointer] * (b_pointer-a_pointer));
-                b_pointer -= 1;
+                b_pointer--;
             }
         }
         return max_area;
+    }
+    //389. Find the Difference
+    class Solution {
+        public char findTheDifference(String s, String t) {
+            char[] Str1 = s.toCharArray();
+            char[] Str2 = t.toCharArray();
+    
+            Arrays.sort(Str1);
+            Arrays.sort(Str2);
+    
+            for(int i = 0; i<Str1.length; i++){
+                if(Str1[i] != Str2[i]){
+                    return Str2[i];
+                }
+            }
+            return Str2[Str2.length-1];
+        }
+    }
+    //350. Intersection of Two Arrays II 
+    public int[] intersect(int[] nums1, int[] nums2) {
+        int len1 = nums1.length;
+        int len2 = nums2.length;
+        int[] ans = new int[len1 * len2];
+        int i = 0, j = 0, k = 0;
+
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+
+        while(i < len1 && j < len2){
+            if(nums1[i] < nums2[j]){
+                i++;
+            }else if(nums1[i] > nums2[j]){
+                j++;
+            }else{
+                ans[k++] = nums1[i++];
+                j++;
+            }
+        }
+        return Arrays.copyOfRange(ans, 0, k);
     }
 }
