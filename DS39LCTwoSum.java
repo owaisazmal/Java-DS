@@ -300,4 +300,25 @@ public class DS39LCTwoSum {
         }
         return Arrays.copyOfRange(ans, 0, k);
     }
+    import java.util.*;
+
+    //25. Valid Palindrome
+    public boolean isPalindrome(String s) {
+        // Convert to lowercase and remove non-alphanumeric characters
+        s = s.toLowerCase().replaceAll("[^A-Za-z0-9]", "");
+        
+        int i = 0;
+        int j = s.length() - 1;
+
+        // Check if the string is a palindrome
+        while (i <= j) {
+            if (s.charAt(i) != s.charAt(j)) {
+                return false;
+            }
+            i++;  // Move from the start of the string
+            j--;  // Move from the end of the string
+        }
+        
+        return true;
+    }
 }
