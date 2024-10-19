@@ -218,5 +218,32 @@ public class Comp482HW2 {
             }
         }
     }
+
+    public class BinomialCoefficient {
+
+        public static int binomialCoeff(int n, int k) {
+            int[] C = new int[k + 1];
+    
+            // Initialize the first element as 1, as C(n, 0) is always 1
+            C[0] = 1;
+    
+            // Build the array from the bottom up
+            for (int i = 1; i <= n; i++) {
+                // Start calculating from the rightmost side (min(i, k) down to 1)
+                for (int j = Math.min(i, k); j > 0; j--) {
+                    // C[j] = C[j] + C[j-1]
+                    C[j] = C[j] + C[j - 1];
+                }
+            }
+    
+            return C[k];
+        }
+    
+        public static void main(String[] args) {
+            int n = 5, k = 2;
+            System.out.println("Value of C(" + n + ", " + k + ") is " + binomialCoeff(n, k));
+        }
+    }
+    
         
 }
