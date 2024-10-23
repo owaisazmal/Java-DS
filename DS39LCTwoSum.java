@@ -351,4 +351,25 @@ public class DS39LCTwoSum {
         return max;
 
     }
+    //28. Find the Index of the First Occurrence in a String
+    public int strStr(String haystack, String needle) {
+        // Handle the case where the needle is empty
+        if (needle.isEmpty()) {
+            return 0;
+        }
+
+        // Loop through the haystack but only till there's enough space left for needle
+        for (int i = 0; i <= haystack.length() - needle.length(); i++) {
+            // Check if the first characters match
+            if (haystack.charAt(i) == needle.charAt(0)) {
+                // Check if the substring matches the needle
+                if (haystack.substring(i, i + needle.length()).equals(needle)) {
+                    return i;  // Return the starting index
+                }
+            }
+        }
+        
+        // Return -1 if the needle is not found
+        return -1;
+    }
 }
