@@ -386,4 +386,36 @@ public class DS39LCTwoSum {
 
         return sp == s.length();        
     }
+    //13. Roman to Integer
+    class Solution {
+        public int romanToInt(String s) {
+            // Create a map to store Roman numerals and their corresponding integer values
+            Map<Character, Integer> map = new HashMap<>();
+    
+            // Populate the map with Roman numeral values
+            map.put('I', 1);
+            map.put('V', 5);
+            map.put('X', 10);
+            map.put('L', 50);
+            map.put('C', 100);
+            map.put('D', 500);
+            map.put('M', 1000);
+    
+            // Initialize the result with the last character's value
+            int res = map.get(s.charAt(s.length() - 1));
+    
+            // Loop through the string from the second last character to the first
+            for (int i = s.length() - 2; i >= 0; i--) {
+                // If the current character is less than the next character, subtract its value
+                if (map.get(s.charAt(i)) < map.get(s.charAt(i + 1))) {
+                    res -= map.get(s.charAt(i));
+                } else {
+                    // Otherwise, add its value
+                    res += map.get(s.charAt(i));
+                }
+            }
+    
+            // Return the computed result
+            return res;
+        }
 }
