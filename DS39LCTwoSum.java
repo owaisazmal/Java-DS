@@ -1,6 +1,4 @@
-
 import java.util.*;
-
 
 public class DS39LCTwoSum {
     public static void main(String[] args) {
@@ -418,4 +416,5 @@ public class DS39LCTwoSum {
             // Return the computed result
             return res;
         }
+    }
 }
