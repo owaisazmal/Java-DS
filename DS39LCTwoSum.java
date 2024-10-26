@@ -1,5 +1,4 @@
 import java.util.*;
-
 public class DS39LCTwoSum {
     public static void main(String[] args) {
         int nums[] = {3, 6, 7, 8, 4};
