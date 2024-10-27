@@ -430,4 +430,25 @@ public class DS39LCTwoSum {
         }
         return count;
     }
+    //383. Ransom Note
+    public boolean canConstruct(String ransomNote, String magazine) {
+        if (ransomNote.length() > magazine.length()) return false;
+
+        HashMap<Character, Integer> counts = new HashMap<>();
+
+        // Populate the hashmap with character counts from magazine
+        for (char c : magazine.toCharArray()) {
+            counts.put(c, counts.getOrDefault(c, 0) + 1);
+        }
+
+        // Check if ransomNote can be constructed from magazine
+        for (char c : ransomNote.toCharArray()) {
+            if (!counts.containsKey(c) || counts.get(c) <= 0) {
+                return false;
+            }
+            counts.put(c, counts.get(c) - 1);
+        }
+
+        return true;
+    }
 }
