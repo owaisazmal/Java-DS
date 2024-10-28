@@ -451,4 +451,25 @@ public class DS39LCTwoSum {
 
         return true;
     }
+    //205. Isomorphic Strings    
+    public boolean isIsomorphic(String s, String t) {
+        //if(s.length() != t.length) return false;
+        HashMap<Character, Character> map1 = new HashMap<Character, Character>(); //s -> t
+        
+
+        for(int i = 0; i<s.length(); i++){
+            if(map1.containsKey(s.charAt(i))){
+                if(!map1.get(s.charAt(i)).equals(t.charAt(i))){
+                    return false;
+                } 
+            }else{
+                if(map1.containsValue(t.charAt(i))){
+                    return false;
+                }
+                map1.put(s.charAt(i), t.charAt(i));
+            }
+        }
+        return true;
+
+    }
 }
