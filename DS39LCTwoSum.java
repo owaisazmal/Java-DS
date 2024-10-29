@@ -470,6 +470,28 @@ public class DS39LCTwoSum {
             }
         }
         return true;
+    }
+    //290 Word Pattern
+    public boolean wordPattern(String pattern, String s) {
+        String[] arr = s.split(" ");
+        if (pattern.length() != arr.length) return false;
 
+        Map<Character, String> map = new HashMap<>();
+        for (int i = 0; i < pattern.length(); i++) {
+            char ch = pattern.charAt(i);
+            boolean containsKey = map.containsKey(ch);
+
+            if (map.containsValue(arr[i]) && !containsKey) {
+                return false;
+            }
+
+            if (containsKey && !map.get(ch).equals(arr[i])) {
+                return false;
+            } else if (!containsKey) {
+                map.put(ch, arr[i]);
+            }
+        }
+
+        return true; 
     }
 }
