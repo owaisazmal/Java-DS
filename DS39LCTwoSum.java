@@ -510,4 +510,22 @@ public class DS39LCTwoSum {
 
         return new int[]{};
     }
+    //202. Happy Number
+    public boolean isHappy(int n) {
+        Set<Integer> seenNumber = new HashSet<>();
+        int sum = 0;
+
+        while(sum != 1 && !seenNumber.contains(sum)){
+            seenNumber.add(sum);
+            sum = 0;
+
+            while(n!=0){
+                sum += Math.pow(n%10,2);
+                n/=10;
+            }
+            
+            n = sum;
+        }
+        return sum == 1;
+    }
 }
