@@ -582,4 +582,19 @@ public class DS39LCTwoSum {
             return binaryExp(x * x, n / 2);
         }
     }
+    //9. Palindrome Number
+    public boolean isPalindrome(int x) {
+        
+        String xStr = String.valueOf(x);
+        for(int i = 0; i < xStr.length()/2; i++){
+            int num1 = xStr.charAt(i);
+            int num2 = xStr.charAt(xStr.length()- i-1);
+
+            if(num1 != num2){
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
