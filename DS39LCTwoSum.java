@@ -620,4 +620,22 @@ public class DS39LCTwoSum {
         }
         return stack.isEmpty();
     }
+    //189. Rotate Array
+    public void rotate(int[] nums, int k) {
+        int n = nums.length;
+        k = k % n;  // Adjust k to avoid unnecessary rotations
+        reverse(nums, 0, n - 1);    // Reverse the entire array
+        reverse(nums, 0, k - 1);    // Reverse the first part of the array
+        reverse(nums, k, n - 1);    // Reverse the remaining part of the array
+    }
+
+    public void reverse(int[] nums, int start, int end) {
+        while (start <= end) {
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            start++;
+            end--;
+        }
+    }
 }
