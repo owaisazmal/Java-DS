@@ -638,4 +638,34 @@ public class DS39LCTwoSum {
             end--;
         }
     }
+    //21. Merge Two Sorted Lists
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        // Dummy node to simplify edge cases
+        ListNode* temp_node = new ListNode(0); 
+        ListNode* current_node = temp_node; 
+
+        // Merge the two lists
+        while (list1 != nullptr && list2 != nullptr) {
+            if (list1->val < list2->val) {  // Compare values
+                current_node->next = list1;  // Link current_node to list1
+                list1 = list1->next;  // Move to next node in list1
+            } else {
+                current_node->next = list2;  // Link current_node to list2
+                list2 = list2->next;  // Move to next node in list2
+            }
+            current_node = current_node->next;  // Move the current_node pointer forward
+        }
+
+        // If one of the lists is not empty, link the remaining nodes
+        if (list1 != nullptr) {
+            current_node->next = list1;
+        } else if (list2 != nullptr) {
+            current_node->next = list2;
+        }
+
+        // Return the merged list, starting from the node after the dummy node
+        ListNode* merged_list = temp_node->next;
+        delete temp_node;  // Clean up the dummy node
+        return merged_list;
+    }
 }
