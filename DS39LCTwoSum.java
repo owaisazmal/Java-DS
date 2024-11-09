@@ -1,3 +1,4 @@
+import java.lang.classfile.components.ClassPrinter.ListNode;
 import java.util.*;
 public class DS39LCTwoSum {
     public static void main(String[] args) {
@@ -638,7 +639,7 @@ public class DS39LCTwoSum {
             end--;
         }
     }
-    //21. Merge Two Sorted Lists
+    //. Merge Two Sorted Lists
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
         // Dummy node to simplify edge cases
         ListNode* temp_node = new ListNode(0); 
@@ -667,5 +668,15 @@ public class DS39LCTwoSum {
         ListNode* merged_list = temp_node->next;
         delete temp_node;  // Clean up the dummy node
         return merged_list;
+    }
+    //122. Best Time to Buy and Sell Stock II
+        public int maxProfit(int[] prices) {
+        int profit = 0;
+        for(int i = 1; i<prices.length; i++){
+            if(prices[i]>prices[i-1]){
+                profit += prices[i] - prices[i-1];
+            }
+        }
+        return profit;
     }
 }
