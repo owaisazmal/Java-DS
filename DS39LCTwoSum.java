@@ -706,5 +706,49 @@ public class DS39LCTwoSum {
         else l+=1;
     }
     return new int[] {l+1, r+1};
-}
+    }
+
+    //15. 3sum
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> ans = new ArrayList<>();
+        Arrays.sort(nums);  // Sort the array to use two-pointer technique
+        int n = nums.length;
+
+        for (int i = 0; i < n - 2; i++) {
+            // Skip duplicates for the first element in the triplet
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+
+            int j = i + 1;      // Left pointer
+            int l = n - 1;      // Right pointer
+
+            while (j < l) {
+                int sum = nums[i] + nums[j] + nums[l];
+
+                if (sum == 0) {
+                    ans.add(Arrays.asList(nums[i], nums[j], nums[l]));
+
+                    // Skip duplicates for the second element
+                    while (j < l && nums[j] == nums[j + 1]) {
+                        j++;
+                    }
+                    // Skip duplicates for the third element
+                    while (j < l && nums[l] == nums[l - 1]) {
+                        l--;
+                    }
+
+                    // Move both pointers after finding a valid triplet
+                    j++;
+                    l--;
+                } else if (sum < 0) {
+                    j++;  // Need a larger sum, move left pointer right
+                } else {
+                    l--;  // Need a smaller sum, move right pointer left
+                }
+            }
+        }
+
+        return ans;
+    }
 }
