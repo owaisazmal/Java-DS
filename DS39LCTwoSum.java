@@ -696,4 +696,15 @@ public class DS39LCTwoSum {
         }
         return hindex;
    }
+   //167. Two Sum II - Input Array Is Sorted -med
+   public int[] twoSum(int[] numbers, int target) {
+    int n = numbers.length;
+    int l = 0, r = n-1;
+    while(l<r){
+        if(numbers[l] + numbers[r] == target) break;
+        else if(numbers[l] + numbers[r] > target) r-=1;
+        else l+=1;
+    }
+    return new int[] {l+1, r+1};
+}
 }
