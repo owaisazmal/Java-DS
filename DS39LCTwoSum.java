@@ -243,21 +243,23 @@ public class DS39LCTwoSum {
     }
     //11. Container With Most Water -med
     public int maxArea(int[] height) {
-        int max_area = 0;
-        int a_pointer = 0;
-        int b_pointer = height.length - 1;
-        while (a_pointer < b_pointer){
-            if(height[a_pointer] < height[b_pointer]){
-                max_area = Math.max(max_area, height[a_pointer]*(b_pointer-a_pointer));
-                a_pointer  += 1;
+        int l = 0, maxArea = 0;
+        int r = height.length - 1;
 
-            }
-            else{
-                max_area = Math.max(max_area, height[b_pointer] * (b_pointer-a_pointer));
-                b_pointer--;
+        while (l < r) {
+            // Calculate the area with the current left and right pointers
+            int area = Math.min(height[l], height[r]) * (r - l);
+            maxArea = Math.max(maxArea, area);
+
+            // Move the pointer pointing to the shorter line inward
+            if (height[l] < height[r]) {
+                l++;
+            } else {
+                r--;
             }
         }
-        return max_area;
+
+        return maxArea;
     }
     //389. Find the Difference
     class Solution {
