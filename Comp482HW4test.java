@@ -112,5 +112,29 @@ public class Comp482HW4test {
             System.out.println("Maximum profit: " + maxProfit);
         }
     }
+    public static int minimizeCost(int[][] cost) {
+        int n = cost.length; 
+        boolean[] assignedJobs = new boolean[n]; 
+        int totalCost = 0;
+
+        for (int i = 0; i < n; i++) {
+            int minCost = Integer.MAX_VALUE;
+            int jobIndex = -1;
+
+            // Find the job with the min. cost for persn i
+            for (int j = 0; j < n; j++) {
+                if (!assignedJobs[j] && cost[i][j] < minCost) {
+                    minCost = cost[i][j];
+                    jobIndex = j;
+                }
+            }
+
+            // Assigned the job and add the cost
+            assignedJobs[jobIndex] = true;
+            totalCost += minCost;
+        }
+
+        return totalCost; //return tot. cst
+    }    
     
 }
