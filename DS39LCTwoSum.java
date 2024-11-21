@@ -901,4 +901,26 @@ public class DS39LCTwoSum {
         }
         return sb.toString();
     }
+    //128. Longest Consecutive Sequence
+    public int longestConsecutive(int[] nums) {
+        Set<Integer> numSet = new HashSet<>();
+
+        for (int num : nums) {
+            numSet.add(num);
+        }
+
+        int longest = 0;
+
+        for (int i : nums) {
+            if (!numSet.contains(i - 1)) {
+                int length = 1;
+
+                while (numSet.contains(i + length)) {
+                    length++;
+                }
+                longest = Math.max(longest, length);
+            }
+        }
+        return longest;
+    }
 }
