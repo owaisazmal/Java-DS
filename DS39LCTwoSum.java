@@ -1,9 +1,9 @@
 import java.lang.classfile.components.ClassPrinter.ListNode;
 import java.util.*;
-public class DS39LCTwoSum {
-    public static void main(String[] args) {
-        int nums[] = {3, 6, 7, 8, 4};
-        int[] result = twoSum(nums, 7);  // Store the result
+
+import javax.swing.tree.TreeNode;
+
+// Store the result
         if(result.length > 0) {
             System.out.println("Indices: " + result[0] + ", " + result[1]);  // Print the result
         } else {
@@ -923,4 +923,20 @@ public class DS39LCTwoSum {
         }
         return longest;
     }
+    //108. Convert Sorted Array to Binary Search Tree
+    class Solution {
+        public TreeNode sortedArrayToBST(int[] nums) {
+            if (nums.length == 0) return null;
+            return constructTreeFromArray(nums, 0, nums.length -1);
+        }
+    
+        public TreeNode constructTreeFromArray(int[] nums, int left, int right){
+            if(left > right) return null;
+            int midpoint = left + (right-left) / 2;
+            TreeNode node = new TreeNode(nums[midpoint]);
+            node.left = constructTreeFromArray(nums, left, midpoint-1);
+            node.right = constructTreeFromArray(nums, midpoint+1, right);
+    
+            return node;
+        }
 }
