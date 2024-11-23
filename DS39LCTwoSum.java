@@ -2,8 +2,11 @@ import java.lang.classfile.components.ClassPrinter.ListNode;
 import java.util.*;
 
 import javax.swing.tree.TreeNode;
-
-// Store the result
+public class DS39LCTwoSum {
+    public static void main(String[] args) {
+        int nums[] = {3, 6, 7, 8, 4};
+        int[] result = twoSum(nums, 7);  
+        // Store the result
         if(result.length > 0) {
             System.out.println("Indices: " + result[0] + ", " + result[1]);  // Print the result
         } else {
@@ -924,19 +927,26 @@ import javax.swing.tree.TreeNode;
         return longest;
     }
     //108. Convert Sorted Array to Binary Search Tree
-    class Solution {
-        public TreeNode sortedArrayToBST(int[] nums) {
-            if (nums.length == 0) return null;
-            return constructTreeFromArray(nums, 0, nums.length -1);
+    public TreeNode sortedArrayToBST(int[] nums) {
+        if (nums.length == 0) return null;
+        return constructTreeFromArray(nums, 0, nums.length -1);
+    }
+
+    public TreeNode constructTreeFromArray(int[] nums, int left, int right){
+        if(left > right) return null;
+        int midpoint = left + (right-left) / 2;
+        TreeNode node = new TreeNode(nums[midpoint]);
+        node.left = constructTreeFromArray(nums, left, midpoint-1);
+        node.right = constructTreeFromArray(nums, midpoint+1, right);
+
+        return node;
+    }
+    //104. Maximum Depth of Binary Tree
+    public int maxDepth(TreeNode root) {
+        if(root == null) return 0;
+
+        else{
+            return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
         }
-    
-        public TreeNode constructTreeFromArray(int[] nums, int left, int right){
-            if(left > right) return null;
-            int midpoint = left + (right-left) / 2;
-            TreeNode node = new TreeNode(nums[midpoint]);
-            node.left = constructTreeFromArray(nums, left, midpoint-1);
-            node.right = constructTreeFromArray(nums, midpoint+1, right);
-    
-            return node;
-        }
+    }
 }
