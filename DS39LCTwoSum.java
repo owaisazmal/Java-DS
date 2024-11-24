@@ -949,4 +949,16 @@ public class DS39LCTwoSum {
             return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
         }
     }
+    //100 Same Tree
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        if(p == null && q == null){
+            return true;
+        }
+        if(p == null || q == null){
+            return false;
+        }
+        return (p.val == q.val) &&
+                isSameTree(p.left, q.left)&&
+                isSameTree(p.right, q.right);
+    }
 }
