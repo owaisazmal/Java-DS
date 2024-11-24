@@ -961,4 +961,44 @@ public class DS39LCTwoSum {
                 isSameTree(p.left, q.left)&&
                 isSameTree(p.right, q.right);
     }
+    //2427. Number of Common Factors
+    public int commonFactors(int a, int b) {
+        int count = 0;
+        int limit = Math.min(a,b);
+
+        for(int i = 1; i<=limit; i++){
+            if(a % i == 0 && b%i == 0){
+                count++;
+            }
+        }
+        return count++;
+    }
+    //56. Merge Intervals
+    public int[][] merge(int[][] intervals) {
+        if(intervals.length <= 1){
+            return intervals;
+        }
+        Arrays.sort(intervals, (arr1, arr2) -> Integer.compare(arr1[0], arr2[0]));
+
+        List<int[]> output_arr = new ArrayList();
+        int[] current_interval = intervals[0];
+        output_arr.add(current_interval);
+
+        for(int[] interval : intervals){
+            int curr_begin = current_interval[0];
+            int curr_end = current_interval[1];
+            int next_begin = interval[0];
+            int next_end = interval[1];
+
+            if(curr_end >= next_begin){
+                current_interval[1] = Math.max(curr_end, next_end);
+            }else{
+                current_interval = interval;
+                output_arr.add(current_interval);
+            }
+        }
+
+        return output_arr.toArray(new int [output_arr.size()][]);
+
+    }
 }
