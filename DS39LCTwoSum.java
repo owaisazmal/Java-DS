@@ -997,8 +997,19 @@ public class DS39LCTwoSum {
                 output_arr.add(current_interval);
             }
         }
-
         return output_arr.toArray(new int [output_arr.size()][]);
+    }
+    //226. Invert Binary Tree
+    public TreeNode invertTree(TreeNode root) {
+        if(root == null){
+            return null;
+        }
 
+        TreeNode left = invertTree(root.left);
+        TreeNode right = invertTree(root.right);
+
+        root.left = right;
+        root.right = left;
+        return root;
     }
 }
