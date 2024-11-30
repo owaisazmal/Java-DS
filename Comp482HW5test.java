@@ -2,51 +2,51 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Comp482HW5test {
-    // Main method
+    // Entry point
     public static void main(String[] args) {
-        System.out.println("Solutions for n = 6:");
-        findNQueensSolutions(6, 2); // Find first 2 solutions for n = 6
+        System.out.println("Results for n = 6:");
+        getQueensSolutions(6, 2);
 
-        System.out.println("\nSolutions for n = 7:");
-        findNQueensSolutions(7, 2); // Find first 2 solutions for n = 7
+        System.out.println("\nResults for n = 7:");
+        getQueensSolutions(7, 2);
     }
 
-    // Method to find and print solutions for n-Queens
-    public static void findNQueensSolutions(int n, int numSolutions) {
-        List<List<Integer>> solutions = new ArrayList<>();
-        solveNQueens(n, 0, new int[n], solutions);
+    // Find and display solutions
+    public static void getQueensSolutions(int boardSize, int maxSolutions) {
+        List<List<Integer>> results = new ArrayList<>();
+        searchSolutions(boardSize, 0, new int[boardSize], results);
 
-        // Print the first numSolutions solutions
-        for (int i = 0; i < Math.min(numSolutions, solutions.size()); i++) {
-            System.out.println("Solution " + (i + 1) + ": " + solutions.get(i));
+        // Display only the first 'maxSolutions'
+        for (int idx = 0; idx < Math.min(maxSolutions, results.size()); idx++) {
+            System.out.println("Configuration " + (idx + 1) + ": " + results.get(idx));
         }
     }
 
-    // Recursive method to solve n-Queens using backtracking
-    private static void solveNQueens(int n, int row, int[] positions, List<List<Integer>> solutions) {
-        if (row == n) {
-            // Add current solution to the list
+    // Backtracking logic
+    private static void searchSolutions(int size, int currentRow, int[] positions, List<List<Integer>> results) {
+        if (currentRow == size) {
+            // Store valid configuration
             List<Integer> solution = new ArrayList<>();
-            for (int col : positions) {
-                solution.add(col);
+            for (int pos : positions) {
+                solution.add(pos);
             }
-            solutions.add(solution);
+            results.add(solution);
             return;
         }
 
-        for (int col = 0; col < n; col++) {
-            if (isValid(positions, row, col)) {
-                positions[row] = col;
-                solveNQueens(n, row + 1, positions, solutions);
+        for (int col = 0; col < size; col++) {
+            if (isPositionSafe(positions, currentRow, col)) {
+                positions[currentRow] = col;
+                searchSolutions(size, currentRow + 1, positions, results);
             }
         }
     }
 
-    // Check if placing a queen at (row, col) is valid
-    private static boolean isValid(int[] positions, int row, int col) {
-        for (int i = 0; i < row; i++) {
-            // Check column and diagonal conflicts
-            if (positions[i] == col || Math.abs(positions[i] - col) == Math.abs(i - row)) {
+    // Check for conflicts
+    private static boolean isPositionSafe(int[] positions, int row, int col) {
+        for (int previousRow = 0; previousRow < row; previousRow++) {
+            int previousCol = positions[previousRow];
+            if (previousCol == col || Math.abs(previousCol - col) == Math.abs(previousRow - row)) {
                 return false;
             }
         }
