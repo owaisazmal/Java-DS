@@ -625,7 +625,7 @@ public class DS39LCTwoSum {
             }
         }
         return stack.isEmpty();
-    }
+    
     //189. Rotate Array
     public void rotate(int[] nums, int k) {
         int n = nums.length;
@@ -1011,7 +1011,16 @@ public class DS39LCTwoSum {
         root.left = right;
         root.right = left;
         return root;
-
-
+    }
+    //1346. Check If N and Its Double Exist
+    public boolean checkIfExist(int[] arr) {
+        for (int i = 0; i<arr.length; i++){
+            for(int j = 0; j<arr.length; j++){
+                if(arr[i] == 2*arr[j] && i!=j){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
