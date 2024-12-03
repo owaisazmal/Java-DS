@@ -1035,4 +1035,17 @@ public class DS39LCTwoSum {
         }
         return sp.toString();
     }
+    //452. Minimum Number of Arrows to Burst Balloons
+    public int findMinArrowShots(int[][] points) {
+        Arrays.sort(points, Comparator.comparingInt(a -> a[1]));
+        int start = points[0][1];
+        int count = 1;
+        for(int i = 0; i<points.length;i++){
+            if(points[i][0]>start || points[i][1]<start){
+                count++;
+                start = points[i][1];
+            }
+        }
+        return count;
+    }
 }
