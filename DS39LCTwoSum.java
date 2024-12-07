@@ -1062,4 +1062,14 @@ public class DS39LCTwoSum {
         }
     return j==m;
     }
+    //222. Count Complete Tree Nodes
+    public int countNodes(TreeNode root) {
+        if(root == null){
+            return 0;
+        }
+        int leftroot = countNodes(root.left);
+        int rightroot = countNodes(root.right);
+
+        return leftroot+rightroot + 1;
+    }
 }
