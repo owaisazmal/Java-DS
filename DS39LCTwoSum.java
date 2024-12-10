@@ -1110,5 +1110,34 @@ public class DS39LCTwoSum {
             }
         }
         return Arrays.stream(ans).sum();
-    } 
+    }
+    //42. Trapping Rain Water
+    public int trap(int[] height) {
+        int n = height.length;
+        if (n == 0) return 0; // Handle edge case when array is empty
+        
+        int left[] = new int[n];
+        int right[] = new int[n];
+        
+        // Fill the left array with maximum heights from the left
+        left[0] = height[0];
+        for (int i = 1; i < n; i++) {
+            left[i] = Math.max(left[i - 1], height[i]);
+        }
+        
+        // Fill the right array with maximum heights from the right
+        right[n - 1] = height[n - 1];
+        for (int i = n - 2; i >= 0; i--) {
+            right[i] = Math.max(right[i + 1], height[i]);
+        }
+        
+        // Calculate the water trapped
+        int ans = 0;
+        for (int i = 0; i < n; i++) {
+            ans += Math.min(left[i], right[i]) - height[i];
+        }
+        
+        return ans;
+    }
+
 }
