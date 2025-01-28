@@ -1,4 +1,5 @@
 import java.lang.classfile.components.ClassPrinter.ListNode;
+import java.math.BigInteger;
 import java.util.*;
 
 import javax.swing.tree.TreeNode;
@@ -1177,6 +1178,14 @@ public class DS39LCTwoSum {
             res+=str;
         }
         return res;
+    }
+    //67. addBinary
+    public String addBinary(String a, String b) {
+        BigInteger x = new BigInteger(a, 2);
+        BigInteger y = new BigInteger(b, 2);
+        BigInteger sum = x.add(y);
+        String result = sum.toString(2);
+        return result;
     }
 
 }
