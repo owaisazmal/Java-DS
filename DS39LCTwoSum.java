@@ -1187,5 +1187,16 @@ public class DS39LCTwoSum {
         String result = sum.toString(2);
         return result;
     }
+    //136. Single Number
+    public int singleNumber(int[] nums) {
+        int res = 0;
 
+        for(int i = 0; i<nums.length; i++){
+            res ^= nums[i];
+
+        }
+        return res;
+    }
+
+}
 }
