@@ -88,17 +88,15 @@ public class DS39LCTwoSum {
         return arr;
     }
     //26. Remove Duplicates from Sorted Array
-    class Solution {
-        public int removeDuplicates(int[] nums) {
-            int i = 0;
-            for(int j = 0; j<nums.length; j++){
-                if(nums[i] != nums[j]){
-                    i++;
-                    nums[i]=nums[j];
-                }
+    public int removeDuplicates(int[] nums) {
+        int i = 0;
+        for(int j = 0; j<nums.length; j++){
+            if(nums[i] != nums[j]){
+                i++;
+                nums[i]=nums[j];
             }
-            return i+1;
         }
+        return i+1;
     }
     //27. Remove Element
     public int removeElement(int[] nums, int val) {
@@ -266,7 +264,6 @@ public class DS39LCTwoSum {
         return maxArea;
     }
     //389. Find the Difference
-    class Solution {
         public char findTheDifference(String s, String t) {
             char[] Str1 = s.toCharArray();
             char[] Str2 = t.toCharArray();
@@ -281,7 +278,6 @@ public class DS39LCTwoSum {
             }
             return Str2[Str2.length-1];
         }
-    }
     //350. Intersection of Two Arrays II 
     public int[] intersect(int[] nums1, int[] nums2) {
         int len1 = nums1.length;
@@ -1245,6 +1241,22 @@ public class DS39LCTwoSum {
         }
 
         return maxLength;
+    }
+    //1800. Maximum Ascending Subarray Sum
+    public int maxAscendingSum(int[] nums) {
+        int max=nums[0];
+        int current=nums[0];
+        for(int i=1; i<nums.length; i++){
+            if(nums[i-1]<nums[i]){
+                current = current+nums[i]; 
+            }else{
+                max = Math.max(current, max);
+                current=nums[i];
+            }
+        }
+        max=Math.max(current, max);
+        return max;
+
     }
 }
 }
