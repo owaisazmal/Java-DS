@@ -1256,7 +1256,25 @@ public class DS39LCTwoSum {
         }
         max=Math.max(current, max);
         return max;
-
+    }
+    //3160. Find the Number of Distinct Colors Among the Balls
+    public int[] queryResults(int limit, int[][] queries) {
+        HashMap<Integer,Integer> a=new HashMap<Integer,Integer>();
+        HashMap<Integer,Integer> c=new HashMap<Integer,Integer>();
+        int k[]=new int[queries.length];
+        int i=0;
+        for(int x[]:queries){
+            if(a.containsKey(x[0])){
+                int prec=a.get(x[0]);
+                c.put(prec,c.get(prec)-1);
+                if(c.get(prec)==0)c.remove(prec);
+            }
+            c.put(x[1], c.getOrDefault(x[1],0)+1);
+            a.put(x[0],x[1]);
+            k[i]=c.size();
+            i++;
+        }
+        return k;
     }
 }
 }
