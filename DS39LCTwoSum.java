@@ -1294,5 +1294,19 @@ public class DS39LCTwoSum {
         }
         return head;
     }
+    //3174. Clear Digits
+    public String clearDigits(String s) {
+        StringBuilder res = new StringBuilder();
+        for(char c : s.toCharArray()){
+            if(Character.isDigit(c)){
+            if(res.length() > 0){
+                res.deleteCharAt(res.length() - 1);
+            }
+        }else{
+            res.append(c);
+        }
+    }
+    return res.toString();
+}
 }
 }
