@@ -1307,6 +1307,15 @@ public class DS39LCTwoSum {
         }
     }
     return res.toString();
-}
+    }
+    //1910. Remove All Occurrences of a Substring *lc of the day
+    public String removeOccurrences(String s, String part) {
+        StringBuilder sb = new StringBuilder(s);
+        while(sb.indexOf(part) != -1) {
+            int idx = sb.indexOf(part);
+            sb.delete(idx, idx + part.length());
+        }
+        return sb.toString();
+    }
 }
 }
