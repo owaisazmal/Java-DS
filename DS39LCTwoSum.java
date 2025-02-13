@@ -1308,14 +1308,17 @@ public class DS39LCTwoSum {
     }
     return res.toString();
     }
-    //1910. Remove All Occurrences of a Substring *lc of the day
-    public String removeOccurrences(String s, String part) {
-        StringBuilder sb = new StringBuilder(s);
-        while(sb.indexOf(part) != -1) {
-            int idx = sb.indexOf(part);
-            sb.delete(idx, idx + part.length());
+    //119. Pascal's Triangle II
+    public List<Integer> getRow(int rowIndex) {
+        List<Integer> Tri = new ArrayList<>();
+        Tri.add(1);
+        long prev = 1;
+        for(int i = 1; i<=rowIndex; i++){
+            long next_val = prev * (rowIndex - i + 1)/i;
+            Tri.add((int) next_val);
+            prev = next_val;
         }
-        return sb.toString();
+        return Tri;
     }
 }
 }
