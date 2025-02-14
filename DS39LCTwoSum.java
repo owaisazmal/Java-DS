@@ -1320,5 +1320,16 @@ public class DS39LCTwoSum {
         }
         return Tri;
     }
+    //171. Excel Sheet Column Number
+    public int titleToNumber(String columnTitle) {
+        if(columnTitle == null) return -1;
+        int count = 0;
+        for(char c: columnTitle.toUpperCase().toCharArray()){
+            count*=26;
+            count += c - 'A' + 1;
+        }
+
+        return count;
+    }
 }
 }
